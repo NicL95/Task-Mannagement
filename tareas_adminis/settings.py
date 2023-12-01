@@ -82,8 +82,8 @@ WSGI_APPLICATION = 'tareas_adminis.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgre:postgres@localhost/postgres
-        conn_max_age=600'
+        default='postgresql://postgre:postgres@localhost/postgres',
+        conn_max_age=600
     )
 }
 
