@@ -1,0 +1,35 @@
+{% extends 'inicio.html' %}
+
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <form method="POST" class="card card-body mt-4">
+                {% if user.is_authenticated %}
+                <h1>{{tarea}}</h1>
+                {{error}}
+                <form method="POST">
+                    {% csrf_token %}
+                    {{formulario.as_p}}
+                    <button class="btn btn-primary">
+                        Modificar
+                    </button>
+                </form>
+                <div class="d-flex">
+                    <form action="completar" method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-primary">
+                            Completar
+                        </button>
+                    </form>
+                </div>
+                {% else %}
+                <h2 class="text-center mt-5">Inicia sesión o regístrate para poder ver o modificar las tareas</h2>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

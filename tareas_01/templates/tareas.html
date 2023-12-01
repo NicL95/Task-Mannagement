@@ -1,0 +1,35 @@
+{% extends 'inicio.html' %}
+
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            {% if user.is_authenticated %}
+            <h1 class="text-center display-3 py-3">Tareas Pendientes</h1>
+            <p class="text-center">Aca podemos ver la lista de tareas activas en este momento:</p>
+            <ul class="list-group">
+                {% for Tareas in listaTareas %}
+                <a class="list-group-item py-2 btn bg-dark text-white btn btn-outline-secondary btn-lg" href="{{Tareas.id}}">
+                    <header class="d-flex justify-content-between">
+                        {% if Tareas.urgente %}
+                        <h4 class="fw-bold text-danger">{{Tareas.titulo}}</h4>
+                        {{Tareas.creado|date:'j M Y'}}
+                        {% else %}
+                        <h4 class="fw-bold text-secundary">{{Tareas.titulo}}</h4>
+                        {{Tareas.creado|date:'j M Y'}}
+                        {% endif %}
+                        
+                        <p>{{Tareas.usuario.username}}</p>
+                    </header>
+                </a>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <h2 class="text-center mt-3">Inicia sesión o regístrate para poder ver o modificar las tareas</h2>
+            {% endif %}
+        </div>
+    </div>
+</main>
+
+{% endblock %}

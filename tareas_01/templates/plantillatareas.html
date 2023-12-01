@@ -1,0 +1,44 @@
+<ul>
+    {% for Tareas in listaTareas %}
+    <li>
+        <h1>{{Tareas.titulo}}</h1>
+
+        <strong>{{Tareas.descripcion}}</strong>
+
+        <p>{{Tareas.usuario.username}}</p>
+    </li>
+    {% endfor %}
+</ul>
+
+
+
+
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Estado</th>
+            <th>Creado por:</th>
+        </tr>
+    </thead>
+
+    {% for Tareas in listaTareas %}
+
+    <tbody>
+        <tr>
+            <td>{{Tareas.id}}</td>
+            <td>{{Tareas.titulo}}</td>
+            {% if Tareas.urgente == True %}
+            <td>URGENTE</td>
+            {% else %}
+            <td>En proceso</td>
+            {% endif %}
+            <td>{{Tareas.usuario.username}}</td>
+        </tr>
+    </tbody>
+
+    {% endfor %}
+
+</table>
